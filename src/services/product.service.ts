@@ -11,7 +11,7 @@ class productService {
         })
     }
     async updateProduct(productId: string, data: IProductData) {
-        return await axiosConfig.put('/v1/product/'+productId, data, {
+        return await axiosConfig.put('/v1/product/' + productId, data, {
             headers: {
                 "Content-Type": "multipart/form-data"
             }
@@ -23,10 +23,16 @@ class productService {
         })
     }
     async deleteProductById(productId: string) {
-        return await axiosConfig.delete('/v1/product/'+productId)
+        return await axiosConfig.delete('/v1/product/' + productId)
     }
     async getProductById(productId: string) {
-        return axiosConfig.get('/v1/product/'+productId)
+        return axiosConfig.get('/v1/product/' + productId)
+    }
+    async getSellerBrands(params: IPaginationParams) {
+        return await axiosConfig.get('/v1/brand', { params });
+    }
+    async getSellerCategories(params: IPaginationParams) {
+        return await axiosConfig.get('/v1/category', { params });
     }
 }
 export default new productService(); 

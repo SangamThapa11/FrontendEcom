@@ -1,6 +1,6 @@
 import { Dropdown, Menu, Space } from "antd";
 import { Navigate, NavLink, Outlet, useNavigate } from "react-router";
-import logo from "../../assets/images/logo.jpg"
+import logo from "../../assets/images/logo.png"
 import { UserRoles } from "../../config/constants";
 import { AdminMenu, SellerMenu } from "../../config/userMenuItems";
 import type { ItemType } from "antd/es/menu/interface";
@@ -53,7 +53,7 @@ const UserLayoutPage = ({ role }: Readonly<{ role: UserRoles }>) => {
                           </>
                         <Dropdown className="hover:cursor-pointer transition hover:scale-96" menu={{
                             items: [
-                                {key: "profile", label: <NavLink to={'/admin/me'}>User Profile</NavLink>, icon: <AiOutlineUser/>},
+                                {key: "profile", label: <NavLink to={'/me'}>User Profile</NavLink>, icon: <AiOutlineUser/>},
                                 {key: "logout", label:<span onClick={() =>{
                                     localStorage.clear()
                                     setLoggedInUser(null)
@@ -71,7 +71,7 @@ const UserLayoutPage = ({ role }: Readonly<{ role: UserRoles }>) => {
                     <div className="h-full mx-5 p-5 overflow-y-auto bg-gray-200 ">
                         <Outlet />
                     </div>
-                    <div className="h-20 w-full bg-gray-200 ">Footer</div> 
+                    <div className="h-20 w-full bg-gray-200 ">© 2025. E-Pasal. All rights reserved.</div> 
                 </div>
             </div>
         </>

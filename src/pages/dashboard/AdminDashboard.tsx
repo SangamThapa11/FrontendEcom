@@ -72,7 +72,7 @@ const AdminDashboard = () => {
     const fetchDashboardData = async () => {
       try {
         setLoading({ users: true, products: true, orders: true });
-        
+
         // Fetch all data in parallel
         const [usersResponse, productsResponse, ordersResponse] = await Promise.all([
           userService.getAllUSers({ page: 1, limit: 1 }),
@@ -180,7 +180,7 @@ const AdminDashboard = () => {
   return (
     <div className="bg-gray-50 min-h-screen flex flex-col w-full gap-5 p-5">
       <ListPageHeader pageTitle="Dashboard" />
-      
+
       <div className="mb-6">
         <h1 className="text-2xl font-bold">
           Welcome, {loggedInUser?.name}

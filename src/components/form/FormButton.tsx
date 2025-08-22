@@ -2,6 +2,7 @@
 export interface FormButtonProps {
     children: React.ReactNode
     disabled?: boolean
+    
 }
 export const CancelButton = ({children, disabled=false}: Readonly<FormButtonProps>) => {
     return (<>

@@ -1,4 +1,4 @@
-import logo from "../../assets/images/logo.jpg"
+import logo from "../../assets/images/Logo.png"
 import backgroundVideo from "../../assets/videos/bc.mp4"
 import { PageTitle } from "../PageSection";
 interface IAuthSidePanelProps {

@@ -14,6 +14,16 @@ class UserService {
     async getUserById(userId: string) {
         return axiosConfig.get('/v1/users/'+userId)
     }
+    async updateUserImage(userId: string, data: FormData) {
+    return await axiosConfig.patch("/v1/users/" + userId + "/image", data, {
+        headers: {
+            "Content-Type": "multipart/form-data"
+        }
+    });
+}
+    async updateUser(userId: string, data: { name: string }) {
+    return await axiosConfig.patch("/v1/users/" + userId, data);
+}
     
 }
 

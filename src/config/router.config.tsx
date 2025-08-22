@@ -28,7 +28,10 @@ import CategoryEditPage from "../pages/Category/categoryEditPage"
 import ProductCreatePage from "../pages/Products/productCreatePage"
 import ProductEditPage from "../pages/Products/productEditPage"
 import TransactionsPage from "../pages/transactions/transactionPage"
-import UserProfilePage from "../pages/userProfile/AdminProfile"
+import ResetPasswordPage from "../pages/auth/ResetPassword"
+import UserProfilePage from "../pages/userProfile/UserProfile"
+
+
 
 
 const router = createBrowserRouter([
@@ -40,30 +43,37 @@ const router = createBrowserRouter([
                 handle: {
                     title: "Login Page",
                     subtitle: "Welcome to MyCommerce",
-                    description: "Welcome to our e-commerce platform! We’re excited to have you join our community of smart shoppers.",
+                    description: "Welcome to our E-Pasal platform! We’re excited to have you join our community of smart shoppers.",
                 }
             },
             {
                 path: "register", element: <RegisterPage />, handle: {
                     title: "Register Now",
                     subtitle: "New to MyCommerce?",
-                    description: "Welcome to our e-commerce platform! We’re excited to have you join our community of smart shoppers.",
+                    description: "Welcome to our E-Pasal platform! We’re excited to have you join our community of smart shoppers.",
                 }
             },
             {
                 path: "activate/:token", Component: ActivateUser, handle: {
                     title: "Welcome Back!",
                     subtitle: "Hop op!!!",
-                    description: "Welcome to our e-commerce platform! We’re excited to have you join our community of smart shoppers.",
+                    description: "Welcome to our E-Pasal platform! We’re excited to have you join our community of smart shoppers.",
                 }
             },
             {
                 path: "forget-password", Component: ForgetPasswordPage, handle: {
                     title: "You got stuck?",
                     subtitle: "Request to reset!!!",
-                    description: "Welcome to our e-commerce platform! We’re excited to have you join our community of smart shoppers.",
+                    description: "Welcome to our E-Pasal platform! We’re excited to have you join our community of smart shoppers.",
                 }
-            }
+            },
+            {
+                path: "reset-password/:token", Component: ResetPasswordPage, handle: {
+                    title: "Type Your New Password?",
+                    subtitle: "Request to reset!!!",
+                    description: "Welcome to our E-Pasal platform! We’re excited to have you join our community of smart shoppers.",
+                }
+            },
         ]
     },
 
@@ -76,30 +86,31 @@ const router = createBrowserRouter([
         </UserLayoutProvider>,
         children: [
             { index: true, element: <AdminDashboard /> },
+            { path: "me", element: <UserProfilePage /> },
             { path: "banner", element: <BannerListPage /> },
             { path: "banner/create", element: <BannerCreatePage /> },
             { path: "banner/:id", element: <BannerEditPage /> },
 
-            { path: "category", element: <CategoryListPage/>},
-            { path: "category/create", element: <CategoryCreatePage />},
-            { path: "category/:id", element: <CategoryEditPage/>},
+            { path: "category", element: <CategoryListPage /> },
+            { path: "category/create", element: <CategoryCreatePage /> },
+            { path: "category/:id", element: <CategoryEditPage /> },
 
-            { path: "brand", element: <BrandList/>},
-            { path: "brand/create", element: <BrandCreatePage/>},
-            { path: "brand/:id", element: <BrandEditPage />},
+            { path: "brand", element: <BrandList /> },
+            { path: "brand/create", element: <BrandCreatePage /> },
+            { path: "brand/:id", element: <BrandEditPage /> },
 
-            { path: "users", element: <UserPage />},
+            { path: "users", element: <UserPage /> },
 
-            { path: "products", element: <ProductListPage/>},
-            { path: "products/create", element: <ProductCreatePage/>},
-            { path: "products/:id", element: <ProductEditPage/>},
+            { path: "products", element: <ProductListPage /> },
+            { path: "products/create", element: <ProductCreatePage /> },
+            { path: "products/:id", element: <ProductEditPage /> },
 
-            { path: "transactions", element:<TransactionsPage/>},
+            { path: "transactions", element: <TransactionsPage /> },
 
-            { path: "order", element: <OrderListPage/>}, 
+            { path: "order", element: <OrderListPage /> },
             { path: "chat", element: <ChatListPage /> },
 
-            { path: "order", element:<UserProfilePage/>},
+            // { path: "order", element:<UserProfilePage/>},
             { path: "*", element: <NotFound redirect="/admin" /> }
         ]
     },
@@ -111,13 +122,14 @@ const router = createBrowserRouter([
         </UserLayoutProvider>,
         children: [
             { index: true, element: <SellerDashboard /> },
-            { path: "products", element: <ProductListPage/>},
-            { path: "products/create", element: <ProductCreatePage/>},
-            { path: "products/:id", element: <ProductEditPage/>},
+            { path: "me", element: <UserProfilePage /> },
+            { path: "products", element: <ProductListPage /> },
+            { path: "products/create", element: <ProductCreatePage /> },
+            { path: "products/:id", element: <ProductEditPage /> },
 
-            { path: "transactions", element: <TransactionsPage/>},
+            { path: "transactions", element: <TransactionsPage /> },
 
-            { path: "order", element: <OrderListPage/>}, 
+            { path: "order", element: <OrderListPage /> },
             { path: "chat", element: <ChatListPage /> },
         ]
     },
@@ -128,10 +140,10 @@ const router = createBrowserRouter([
 ])
 const RouterConfig = () => {
     return <>
-        
-            <Toaster position="top-right" richColors closeButton />
-            <RouterProvider router={router}></RouterProvider>
-        
+
+        <Toaster position="top-right" richColors closeButton />
+        <RouterProvider router={router}></RouterProvider>
+
         {/*
         <BrowserRouter>
          <Routes>

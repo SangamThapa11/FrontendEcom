@@ -1,4 +1,4 @@
-import logo from "../../assets/images/logo.jpg"
+import logo from "../../assets/images/Logo.png"
 import { PageTitle } from "../../components/PageSection";
 import HorizontalDivider from "../../components/divider/HorizontalDivider";
 import RegisterFormComponent from "../../components/auth/RegisterForm";

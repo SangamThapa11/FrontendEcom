@@ -1,5 +1,5 @@
 
-import logo from "../assets/images/logo.jpg"
+import logo from "../assets/images/logo.png"
 import { PageTitle } from "../components/PageSection";
 import LoginForm from "./auth/LoginForm";
 import HorizontalDivider from "../components/divider/HorizontalDivider";
