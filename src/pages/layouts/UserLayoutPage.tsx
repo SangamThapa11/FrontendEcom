@@ -53,7 +53,7 @@ const UserLayoutPage = ({ role }: Readonly<{ role: UserRoles }>) => {
                           </>
                         <Dropdown className="hover:cursor-pointer transition hover:scale-96" menu={{
                             items: [
-                                {key: "profile", label: <NavLink to={'/me'}>User Profile</NavLink>, icon: <AiOutlineUser/>},
+                                {key: "profile", label: <NavLink to={'me'}>User Profile</NavLink>, icon: <AiOutlineUser/>},
                                 {key: "logout", label:<span onClick={() =>{
                                     localStorage.clear()
                                     setLoggedInUser(null)

@@ -11,12 +11,6 @@ export const AdminMenu: ItemType[] =
             icon: <AiOutlineHome />
         },
         {
-            key: "profile",
-            title: "UserProfile",
-            label: <NavLink to ="/admin/me">User Profile</NavLink>
-        },
-
-        {
             key: "banner",
             title: "Banner",
             label: <NavLink to="/admin/banner">Banner</NavLink>,
@@ -72,11 +66,6 @@ export const SellerMenu: ItemType[] =
             title: "Dashboard",
             label: <NavLink to="/seller/">Dashboard</NavLink>,
             icon: <AiOutlineHome />
-        },
-        {
-            key: "profile",
-            title: "UserProfile",
-            label: <NavLink to ="/admin/me">User Profile</NavLink>
         },
 
         {

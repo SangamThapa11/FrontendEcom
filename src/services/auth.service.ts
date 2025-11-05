@@ -26,14 +26,13 @@ class AuthService {
         return await axiosConfig.post("/v1/auth/forget-password", { email })
     }
     async verifyForgetToken(token: string) {
-        const encodedToken = encodeURIComponent(token);
-        return await axiosConfig.get(`/v1/auth/forget-password/${encodedToken}/verify`);
+       return await axiosConfig.get(`/v1/auth/forget-password/${token}/verify`);
     }
-     async resetPassword(verifiedToken: string, password: string) {
-        return await axiosConfig.patch("/v1/auth/reset-password", {
-            password,
-            verifiedToken
-        });
+    async resetPassword(token: string, password: string) {
+    return await axiosConfig.patch("/v1/auth/reset-password", {
+        password,
+        verifiedToken: token  
+    });
     }
 }
 

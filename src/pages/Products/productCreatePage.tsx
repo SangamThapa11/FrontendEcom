@@ -97,7 +97,7 @@ const ProductCreatePage: React.FC = () => {
   const price = watch("price");
   const discount = watch("discount");
   useEffect(() => {
-    const afterDiscountValue = (price - (price * (discount || 0)) / 100)/100;
+    const afterDiscountValue = (price - (price * (discount || 0)) / 100);
     setValue("afterDiscount", afterDiscountValue);
   }, [price, discount, setValue]);
 

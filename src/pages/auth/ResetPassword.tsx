@@ -32,11 +32,7 @@ const ResetPasswordPage = () => {
   const [isVerifying, setIsVerifying] = useState(true);
   const [verifiedToken, setVerifiedToken] = useState("");
 
-  const {
-    control,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<ResetPasswordFormData>({
+  const {control, handleSubmit, formState: { errors, isSubmitting },} = useForm<ResetPasswordFormData>({
     defaultValues: { password: "", confirmPassword: "" },
     resolver: yupResolver(ResetPasswordSchema),
     mode: "onChange",
@@ -44,57 +40,47 @@ const ResetPasswordPage = () => {
 
   useEffect(() => {
   const verifyToken = async () => {
-    if (!token) {
-      console.error("No token found in URL");
-      toast.error("Invalid reset link - no token provided");
+    if (token) {
+      try {
+        const response = await authSvc.verifyForgetToken(token);
+    
+        setVerifiedToken(response.data.verifyToken);
+        setIsTokenVerified(true);
+        toast.success("Reset link verified successfully");
+      } catch (error: any) {
+        console.error("Token verification error:", error);
+        const errorMessage = error.response?.data?.message || "Invalid or expired reset link";
+        toast.error(errorMessage);
+        setIsTokenVerified(false);
+      } finally {
+        setIsVerifying(false);
+      }
+    } else {
       setIsVerifying(false);
-      return;
-    }
-
-    console.log("Token from URL:", token);
-
-    try {
-      setIsVerifying(true);
-      console.log("Calling verifyForgetToken API with token:", token);
-      
-      const response = await authSvc.verifyForgetToken(token);
-      console.log("API Response:", response.data);
-      
-      // Use the token from response (should be the same as input)
-      setVerifiedToken(response.data.data.verifyToken);
-      setIsTokenVerified(true);
-      toast.success("Reset link verified successfully");
-      
-    } catch (error: any) {
-      console.error("Token verification error:", error);
-      console.error("Error response:", error.response);
-      
-      const errorMessage = error.response?.data?.message || "Invalid or expired reset link";
-      toast.error(errorMessage);
+      toast.error("No reset token provided");
       setIsTokenVerified(false);
-    } finally {
-      setIsVerifying(false);
     }
   };
 
   verifyToken();
 }, [token]);
 
-  const submitForm = async (data: ResetPasswordFormData) => {
-    if (!isTokenVerified || !verifiedToken) {
-      toast.error("Please verify your token first");
-      return;
-    }
+const submitForm = async (data: ResetPasswordFormData) => {
+  if (!isTokenVerified || !verifiedToken) { 
+    toast.error("Please verify your token first");
+    return;
+  }
 
-    try {
-      await authSvc.resetPassword(verifiedToken, data.password);
-      toast.success("Password reset successfully!");
-      navigate("/login");
-    } catch (error: any) {
-      const errorMessage = error.response?.data?.message || "Password reset failed";
-      toast.error(errorMessage);
-    }
-  };
+  try {
+    await authSvc.resetPassword(verifiedToken, data.password); 
+    toast.success("Password reset successfully!");
+    navigate("/");
+  } catch (error: any) {
+    console.error("Reset password error:", error);
+    const errorMessage = error.response?.data?.message || "Password reset failed";
+    toast.error(errorMessage);
+  }
+};
 
   if (isVerifying) {
     return (

@@ -189,7 +189,7 @@ const ProductListPage: React.FC = () => {
       title: "Price",
       dataIndex: "price",
       key: "price",
-      render: (price: number) => `$${price.toFixed(2)}`,
+      render: (price: number) => `$${(price / 100).toFixed(2)}`,
       align: "right",
     },
     {
@@ -203,7 +203,7 @@ const ProductListPage: React.FC = () => {
       title: "Final Price",
       dataIndex: "afterDiscount",
       key: "afterDiscount",
-      render: (price: number) => `$${price.toFixed(2)}`,
+      render: (price: number) => `$${(price / 100).toFixed(2)}`,
       align: "right",
     },
     {
@@ -237,11 +237,10 @@ const ProductListPage: React.FC = () => {
           <Tooltip title={canEditProduct(record) ? "Edit" : "No permission"}>
             <NavLink
               to={`${baseRoute}/${record._id}`}
-              className={`flex items-center justify-center w-8 h-8 rounded-full ${
-                canEditProduct(record)
+              className={`flex items-center justify-center w-8 h-8 rounded-full ${canEditProduct(record)
                   ? "bg-teal-600 hover:bg-teal-700 text-white"
                   : "bg-gray-200 text-gray-400 cursor-not-allowed"
-              }`}
+                }`}
             >
               <AiOutlineEdit />
             </NavLink>
@@ -255,11 +254,10 @@ const ProductListPage: React.FC = () => {
               disabled={!canDeleteProduct(record)}
             >
               <button
-                className={`flex items-center justify-center w-8 h-8 rounded-full ${
-                  canDeleteProduct(record)
+                className={`flex items-center justify-center w-8 h-8 rounded-full ${canDeleteProduct(record)
                     ? "bg-red-600 hover:bg-red-700 text-white"
                     : "bg-gray-200 text-gray-400 cursor-not-allowed"
-                }`}
+                  }`}
                 disabled={!canDeleteProduct(record)}
               >
                 <AiOutlineDelete />

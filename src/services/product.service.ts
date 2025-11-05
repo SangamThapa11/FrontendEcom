@@ -10,13 +10,14 @@ class productService {
             }
         })
     }
-    async updateProduct(productId: string, data: IProductData) {
+    async updateProduct(productId: string, data: FormData) {
         return await axiosConfig.put('/v1/product/' + productId, data, {
             headers: {
                 "Content-Type": "multipart/form-data"
             }
-        })
+        });
     }
+
     async getAllProduct(params: IPaginationParams) {
         return await axiosConfig.get("/v1/product/", {
             params: params

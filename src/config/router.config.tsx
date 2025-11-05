@@ -1,4 +1,3 @@
-//import { BrowserRouter, Route, Routes } from "react-router"
 import { createBrowserRouter, RouterProvider } from "react-router"
 import LandingPage from "../pages/landingPage"
 import RegisterPage from "../pages/auth/RegisterPage"
@@ -30,9 +29,8 @@ import ProductEditPage from "../pages/Products/productEditPage"
 import TransactionsPage from "../pages/transactions/transactionPage"
 import ResetPasswordPage from "../pages/auth/ResetPassword"
 import UserProfilePage from "../pages/userProfile/UserProfile"
-
-
-
+import TokenVerificationPage from "../pages/auth/TokenVerification"
+import EditProfilePage from "../pages/userProfile/ProfileEdit"
 
 const router = createBrowserRouter([
     {
@@ -42,14 +40,14 @@ const router = createBrowserRouter([
                 index: true, Component: LandingPage,
                 handle: {
                     title: "Login Page",
-                    subtitle: "Welcome to MyCommerce",
+                    subtitle: "Welcome to E-Pasal",
                     description: "Welcome to our E-Pasal platform! We’re excited to have you join our community of smart shoppers.",
                 }
             },
             {
                 path: "register", element: <RegisterPage />, handle: {
                     title: "Register Now",
-                    subtitle: "New to MyCommerce?",
+                    subtitle: "New to E-Pasal?",
                     description: "Welcome to our E-Pasal platform! We’re excited to have you join our community of smart shoppers.",
                 }
             },
@@ -68,7 +66,14 @@ const router = createBrowserRouter([
                 }
             },
             {
-                path: "reset-password/:token", Component: ResetPasswordPage, handle: {
+                path: "forget-password/:token/verify", Component: TokenVerificationPage, handle: {
+                    title: "Verifying Token",
+                    subtitle: "Please wait...",
+                    Descriptions: "We are verifying your token, please do not close or refresh the page."
+                }
+            },
+            {
+                path: "reset-password", Component: ResetPasswordPage, handle: {
                     title: "Type Your New Password?",
                     subtitle: "Request to reset!!!",
                     description: "Welcome to our E-Pasal platform! We’re excited to have you join our community of smart shoppers.",
@@ -87,6 +92,8 @@ const router = createBrowserRouter([
         children: [
             { index: true, element: <AdminDashboard /> },
             { path: "me", element: <UserProfilePage /> },
+            { path: "me/edit", element: <EditProfilePage /> },
+
             { path: "banner", element: <BannerListPage /> },
             { path: "banner/create", element: <BannerCreatePage /> },
             { path: "banner/:id", element: <BannerEditPage /> },
@@ -110,7 +117,6 @@ const router = createBrowserRouter([
             { path: "order", element: <OrderListPage /> },
             { path: "chat", element: <ChatListPage /> },
 
-            // { path: "order", element:<UserProfilePage/>},
             { path: "*", element: <NotFound redirect="/admin" /> }
         ]
     },
@@ -123,6 +129,7 @@ const router = createBrowserRouter([
         children: [
             { index: true, element: <SellerDashboard /> },
             { path: "me", element: <UserProfilePage /> },
+            { path: "me/edit", element: <EditProfilePage /> },
             { path: "products", element: <ProductListPage /> },
             { path: "products/create", element: <ProductCreatePage /> },
             { path: "products/:id", element: <ProductEditPage /> },
