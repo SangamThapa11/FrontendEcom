@@ -25,7 +25,7 @@ const BrandCreateData = Yup.object({
 })
 const BrandCreatePage = () => {
     const navigate = useNavigate()
-    const {control, handleSubmit, formState: {errors, isSubmitting}, setError} = useForm<IBrandCreateDataType>({
+    const {control, handleSubmit, formState: {errors, isSubmitting}} = useForm<IBrandCreateDataType>({
         defaultValues: {
             name: "",
             status: Status.INACTIVE,
