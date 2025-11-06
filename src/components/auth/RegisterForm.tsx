@@ -15,6 +15,7 @@ const RegisterFormComponent = () => {
     defaultValues: RegisterDefaultValues as IRegisterData,
     resolver: yupResolver(RegisterDTO) as any
   })
+  const FileUploadAny = FileUpload as unknown as any;
   const submitForm = async (data: IRegisterData) => {
     //api server call 
     try {
@@ -131,11 +132,10 @@ const RegisterFormComponent = () => {
             />
           </div>
         </div>
-
         <div className="flex w-full ">
           <label htmlFor="Image" className="w-2/5">Image:</label>
           <div className="flex w-3/5">
-            <FileUpload
+            <FileUploadAny
               name="image"
               setValue={(name: string, value: File) => setValue(name as any, value)}
               control={control}
@@ -143,6 +143,7 @@ const RegisterFormComponent = () => {
             />
           </div>
         </div>
+
 
 
         <div className="flex w-full">

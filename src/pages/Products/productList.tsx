@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineDelete, AiOutlineEdit, AiOutlinePlus } from "react-icons/ai";
 import { Input, Popconfirm, Table, Tag, Tooltip } from "antd";
-import { NavLink, useNavigate } from "react-router";
+import { NavLink } from "react-router";
 import { toast } from "sonner";
 
 // Services
@@ -41,7 +41,6 @@ interface ICategoryMap {
 
 const ProductListPage: React.FC = () => {
   const { loggedInUser } = useAuth();
-  const navigate = useNavigate();
   const isSeller = loggedInUser?.role === UserRoles.SELLER;
   const baseRoute = isSeller ? "/seller/products" : "/admin/products";
 
@@ -171,7 +170,7 @@ const ProductListPage: React.FC = () => {
         <div className="flex flex-wrap gap-1">
           {categories?.map((category) => (
             <Tag key={category._id} color="blue">
-              {category.name}
+              {categoryMap[category._id] || category.name}
             </Tag>
           ))}
         </div>
@@ -190,27 +189,27 @@ const ProductListPage: React.FC = () => {
       dataIndex: "price",
       key: "price",
       render: (price: number) => `$${(price / 100).toFixed(2)}`,
-      align: "right",
+      align: "right" as "left" | "right" | "center",
     },
     {
       title: "Discount",
       dataIndex: "discount",
       key: "discount",
       render: (discount: number) => `${discount}%`,
-      align: "right",
+      align: "right" as "left" | "right" | "center",
     },
     {
       title: "Final Price",
       dataIndex: "afterDiscount",
       key: "afterDiscount",
       render: (price: number) => `$${(price / 100).toFixed(2)}`,
-      align: "right",
+      align: "right" as "left" | "right" | "center",
     },
     {
       title: "Stock",
       dataIndex: "stock",
       key: "stock",
-      align: "right",
+      align: "right" as "left" | "right" | "center",
     },
     {
       title: "Status",

@@ -17,16 +17,6 @@ import { Controller } from 'react-hook-form';
 import type { ICategoryDataType } from "./categoryCreatePage";
 
 
-interface ICategoryData {
-    _id: string;
-    name: string;
-    status: Status;
-    isFeatured: boolean;
-    inMenu: boolean;
-    brands: string[];
-    image: string | null;
-}
-
 interface IBrandOption {
     label: string;
     value: string;

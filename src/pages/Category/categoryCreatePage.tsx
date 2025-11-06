@@ -133,7 +133,7 @@ const CategoryCreatePage = () => {
 
   useEffect(() => {
     loadBrands();
-    loadCategories(); // Add this
+    loadCategories(); 
   }, []);
 
   return ( <>

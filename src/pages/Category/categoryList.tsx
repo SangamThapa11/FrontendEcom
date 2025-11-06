@@ -8,7 +8,6 @@ import categoryService from "../../services/category.service";
 import { toast } from "sonner";
 import type { AxiosSuccessResponse } from "../../config/axios.config";
 import brandService from "../../services/brand.service";
-import type { IBrandData } from "../Brand/brandList";
 
 export interface ICategoryData {
     _id: string,
@@ -69,11 +68,11 @@ const CategoryListPage = () => {
             key: "brands",
             title: "Brands",
             dataIndex: "brands",
-            render: (brands: IBrandData[]) => (
+            render: (brands: string[]) => (
                 <div className="flex flex-wrap gap-1">
                     {brands?.map(brandId => {
-                        return <span key={brandId._id} className="bg-gray-100 px-2 py-1 rounded text-sm">
-                            {brandId.name || 'Unknown Brand'}
+                        return <span key={brandId} className="bg-gray-100 px-2 py-1 rounded text-sm">
+                            {brandMap[brandId] || 'Unknown Brand'}
                         </span>
                     })}
                 </div>
@@ -116,7 +115,6 @@ const CategoryListPage = () => {
             }
         }
     ];
-
     const deleteUser = async (categoryId: string) => {
         setLoading(true)
         try {

@@ -25,7 +25,7 @@ const BannerCreateData = Yup.object({
 
 const BannerCreatePage = () => {
   const navigate = useNavigate()
-  const { control, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<IBannerCreateDataType>({
+  const { control, handleSubmit, formState: { errors, isSubmitting } } = useForm<IBannerCreateDataType>({
     defaultValues: {
       title: "",
       url: "",
