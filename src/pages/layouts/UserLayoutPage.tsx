@@ -1,6 +1,6 @@
 import { Dropdown, Menu, Space } from "antd";
 import { Navigate, NavLink, Outlet, useNavigate } from "react-router";
-import logo from "../../assets/images/logo.png"
+import logo from "../../assets/images/Logo.png"
 import { UserRoles } from "../../config/constants";
 import { AdminMenu, SellerMenu } from "../../config/userMenuItems";
 import type { ItemType } from "antd/es/menu/interface";
