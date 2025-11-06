@@ -46,10 +46,10 @@ const EditProfilePage = () => {
   const handleSubmit = async (values: { name: string; phone: string; address: string }) => {
     try {
       setUpdating(true);
-      const response = (await userService.updateUser(
+      await userService.updateUser(
         userData?._id || "",
         values
-      )) as unknown as AxiosSuccessResponse;
+      ) as unknown as AxiosSuccessResponse;
       
       setUserData(prev => ({
         ...prev!,

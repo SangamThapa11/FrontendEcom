@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Avatar, Button, Spin, message } from "antd";
+import { Button, Spin, message } from "antd";
 import { AiOutlineEdit } from "react-icons/ai";
 import { Gender, Status, UserRoles } from "../../config/constants";
 import authService from "../../services/auth.service";

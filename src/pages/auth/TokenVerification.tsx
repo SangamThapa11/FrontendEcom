@@ -26,7 +26,7 @@ const TokenVerificationPage = () => {
         const decodedToken = decodeURIComponent(token);
         console.log("Verifying token:", decodedToken);
         
-        const response = await authSvc.verifyForgetToken(decodedToken);
+        await authSvc.verifyForgetToken(decodedToken);
         setIsVerified(true);
         toast.success("Token verified successfully!");
         

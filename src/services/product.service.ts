@@ -1,6 +1,5 @@
 import axiosConfig from "../config/axios.config";
 import type { IPaginationParams } from "../config/constants";
-import type { IProductData } from "../pages/Products/productEditPage";
 
 class productService {
     async addProduct(data: FormData) {

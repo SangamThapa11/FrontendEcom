@@ -18,7 +18,6 @@ import OrderService from "../../services/order.service";
 import productService from "../../services/product.service";
 import { toast } from "sonner";
 import dayjs from "dayjs";
-import type { IPaginationParams } from "../../config/constants";
 import userService from "../../services/user.service";
 
 // Register ChartJS components
